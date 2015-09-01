@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Tue Sep 01 12:47:52 CEST 2015:
+ Iniciando instancia a816c00e-014f-8885-296d-0000031c8180 de Derby, versión The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): 
+en el directorio de base de datos C:\Users\Radiofisica\JMV\Java\CervezoAlmacen\CervecitaDB con el cargador de clases sun.misc.Launcher$AppClassLoader@c387f44
+Cargado desde file:/C:/Users/Radiofisica/derby/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_51-b16
+user.dir=C:\Users\Radiofisica\JMV\Java\CervezoAlmacen
+os.name=Windows 8.1
+os.arch=amd64
+os.version=6.3
+derby.system.home=null
+Cargador de clases de base de datos iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Sep 01 12:47:53 CEST 2015: cerrando motor de Derby
+----------------------------------------------------------------
+Tue Sep 01 12:47:53 CEST 2015:
+Cerrando la instancia a816c00e-014f-8885-296d-0000031c8180 en el directorio de base de datos C:\Users\Radiofisica\JMV\Java\CervezoAlmacen\CervecitaDB con cargador de clases sun.misc.Launcher$AppClassLoader@c387f44
+----------------------------------------------------------------
