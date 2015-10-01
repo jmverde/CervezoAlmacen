@@ -177,7 +177,7 @@ public class CreaDB {
 			 + "id_brewer int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
 			 + "name_brewer varchar(60),"
 			 + "description varchar(120),"
-			 + "CONSTRAINT primary_key PRIMARY KEY (id_brewer)"
+			 + "CONSTRAINT primary_key2 PRIMARY KEY (id_brewer)"
 			 +")");
 
 			conn.commit();	
@@ -186,26 +186,33 @@ public class CreaDB {
 			if(!tablasOld.contains("CERVEZA")){
 				s.execute("create table cerveza("
 						+"id_cerveza int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
+						+"nombre varchar(60), "
 						+"id_brewer int, "
 						+"tipo varchar(60), "
 						+"ABV decimal(4,2), "
 						+"IBU decimal(3,0), "
-						+"notas varchar(120)"						
+						+"notas varchar(120),"
+						+ "CONSTRAINT primary_key PRIMARY KEY (id_cerveza),"
+						+ "CONSTRAINT fk1 FOREIGN KEY (id_brewer) REFERENCES brewery(id_brewer) "
 						+")");
 				
 			conn.commit();	
 			}
 			
 			if(!tablasOld.contains("ENTRADAS")){
+				System.out.println("una");
 				s.execute("create table entradas("
 						+"id_entrada int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
 						+"id_cerveza int, "
 						+"lote varchar(30),"
 						+"stock int, "
-						+"caducidad date(yyyymmdd), "
-						+"notas varchar(120) "
+						+"caducidad date, "
+						+"notas varchar(120), "
+						+ "CONSTRAINT primary_key3 PRIMARY KEY (id_entrada),"
+						+ "CONSTRAINT fk2 FOREIGN KEY (id_cerveza) REFERENCES cerveza(id_cerveza) "
 						+")");
 						
+				System.out.println("cero");
 			conn.commit();			
 						
 				
@@ -223,10 +230,6 @@ public class CreaDB {
 
 			conn.commit();
 
-
-			
-			
-
 			 ResultSet pepito= s.executeQuery("SELECT * FROM brewery");
 			
 			 ResultSetMetaData rsmd = pepito.getMetaData();
@@ -240,6 +243,29 @@ public class CreaDB {
 			 System.out.println("");
 			 }
 
+
+			 // datos prueba cerveza
+			 
+				s.execute("insert into cerveza (id_brewer,nombre,tipo,abv,ibu,notas) VALUES(1,'blanca','tripple',8,80.2,'esta esta rica')");
+				s.execute("insert into cerveza (id_brewer,nombre,tipo,abv,notas) VALUES(2,'premium','lagger',5,'esta no')");
+
+
+				System.out.println("cervezas");
+				
+				 pepito= s.executeQuery("SELECT * FROM cerveza");
+					
+				 rsmd = pepito.getMetaData();
+				 columnsNumber = rsmd.getColumnCount();
+				 while (pepito.next()) {
+				 for (int i = 1; i <= columnsNumber; i++) {
+				 if (i > 1) System.out.print(", ");
+				 String columnValue = pepito.getString(i);
+				 System.out.print(columnValue + " " + rsmd.getColumnName(i));
+				 }
+				 System.out.println("");
+				 }
+
+			 
 
 			// System.out.println("acabe");
 
